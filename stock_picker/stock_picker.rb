@@ -1,33 +1,32 @@
 stock_prices = [17,3,6,9,15,8,6,1,10]
 
 def stock_picker(price_array)
-  (array.max == array[0]) ? array.shift : array
-  (array.min == array[-1]) ? array.pop : array
 
+# find every difference between an element and a higher indexed element
+differences = []
+price_array.each do |first_number|
+  price_array.each do |second_number|
+    if price_array.index(second_number) > price_array.index(first_number)
+      differences.push(second_number - first_number)
+    end
+  end
+end
 
+# compare differences and return the pair that matches biggest difference
+answer_array = []
+price_array.each do |first_number|
+  price_array.each do |second_number|
+    if price_array.index(second_number) > price_array.index(first_number)
+      if (second_number - first_number) == differences.sort[-1]
+        answer_array = [price_array.index(first_number), price_array.index(second_number)]
+      end
+    end
+  end
+end
 
-# sort first from lowest to highest
-sorted_array = price_array.sort
-
-if price_array.index(sorted_array[0]) < price_array.index(sorted_array[-1])
+return answer_array
 
 end
 
-price_array.reduce do |a, b|
-  a > b
-
-end
-
-# maybe loop until first occurence of first index being smaller than second
-
-
-# compare index of lowest and highest
-
-
-# compare first array element to make sure it's not the largest
-  array[0] 
-
-  # compare array indexes; ex: array.index(23) < array.index(3)
-
-end
+stock_picker(stock_prices)
 

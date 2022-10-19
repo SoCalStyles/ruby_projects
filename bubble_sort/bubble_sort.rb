@@ -16,4 +16,4 @@ def bubble_sort(array)
   array
 end
 
-# find out how to break if already sorted
+bubble_sort([4,3,78,2,0,2])

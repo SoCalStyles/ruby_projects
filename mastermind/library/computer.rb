@@ -1,14 +1,27 @@
 require_relative
 
 class Computer
-  def initialize()
 
+  def initialize()
+    # maybe create random name for comp
   end
 
-  def create_answer()
-    @answer = @answer_key.map do |element|
+  def self.create_answer()
+    @answer_key.map do |element|
       element = @color_options.sample
     end
+  end
+
+  @turn = 0
+  @colors = @color_options
+
+  def self.guess_answer()
+    @guess = Array.new(4)
+    @guess.map do |element|
+      element = @colors.sample
+    end
+
+
   end
 
 end

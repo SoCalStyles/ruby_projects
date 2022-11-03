@@ -13,9 +13,9 @@ class Game
     @board[2][1] = '8'
     @board[2][2] = '9'
     puts "Here is your starting board:"
-    puts ' ' + @board[0][0] + ' | ' + @board[0][1] + ' | ' + @board[0][2]
-    puts ' ' + @board[1][0] + ' | ' + @board[1][1] + ' | ' + @board[1][2]
-    puts ' ' + @board[2][0] + ' | ' + @board[2][1] + ' | ' + @board[2][2]
+    puts " #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]} "
+    puts " #{@board[1][0]} | #{@board[1][1]} | #{@board[1][2]} "
+    puts " #{@board[2][0]} | #{@board[2][1]} | #{@board[2][2]} "
     player_choice()
   end
 

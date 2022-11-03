@@ -1,8 +1,6 @@
-require_relative 'game.rb'
-
 class Player
-  def initialize
-
+  def initialize()
+    
   end
 
   def player_choice()
@@ -31,11 +29,7 @@ class Player
         end
       end
     end
-    puts " #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]} "
-    puts " #{@board[1][0]} | #{@board[1][1]} | #{@board[1][2]} "
-    puts " #{@board[2][0]} | #{@board[2][1]} | #{@board[2][2]} "
-    # HERE is where we should try to make board blank
-    determine_winner()
+    display_board()
   end
-  
+
 end

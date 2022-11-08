@@ -1,7 +1,6 @@
 require_relative 'board'
 require_relative 'game'
 require_relative 'player'
-require_relative '../main'
 
 class Computer
   def initialize

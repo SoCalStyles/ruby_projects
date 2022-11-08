@@ -1,35 +1,35 @@
-require_relative 'computer.rb'
-require_relative 'board.rb'
-require_relative 'player.rb'
-require_relative 'main.rb'
+require_relative 'computer'
+require_relative 'board'
+require_relative 'player'
+require_relative '../main'
 
+# create instance of Game class
 class Game
   @color_options = %w[blue green orange purple red yellow]
   @answer_key = Array.new(4)
 
   def initialize
     @board = Board.new
-    puts "Okay #{@name}, type 1 to be the Code Maker, type 2 to be the Code Breaker:"
-    @choice = gets.chomp.to_i
-    if @choice == 1
-      @name.code_maker
-      # dd
-    elsif @choice == 2
-      puts "Alright, the computer has selected the secret colors."
-      @name.code_breaker
-      #ff
-    else
-    # do a loop on this to ensure 1 or 2 is chosen
-
+    puts 'Welcome to Mastermind!'
+    puts 'What is your name?'
+    @name = gets.chomp
+    @name = Player.new
   end
 
-  def choose_role
-    # if player chooses maker
-      # call player code maker method
-    
-    # if player chooses guesser
-     # call player code_breaker method
-    @answer = Computer.create_answer()
+  def play
+    puts "Okay #{@name}, type 1 to be the Code Maker, type 2 to be the Code Breaker:"
+    @choice = gets.chomp.to_i
+    case @choice
+    when 1
+      @name.code_maker
+    when 2
+      @answer = Computer.create_answer()
+      puts 'Alright, the computer has selected the secret colors.'
+      @name.code_breaker
+    else
+      # do a loop on this to ensure 1 or 2 is chosen
+    end
+
   end
 
   def self.feedback
@@ -48,7 +48,7 @@ class Game
         @wrong_colors.push(guess)
       end
     end
-    @incorrect_color = (4 - wrong_colors.size)    
+    @incorrect_color = (4 - wrong_colors.size)
     puts "Correct: #{@correct}"
     puts "Incorrect Position: #{@incorrect_position}"
     puts "Incorrect Color: #{@incorrect_color}"
@@ -66,4 +66,5 @@ class Game
       self.feedback
     end
   end
+
 end

@@ -1,15 +1,12 @@
-require_relative 'computer.rb'
-require_relative 'game.rb'
-require_relative 'board.rb'
-require_relative 'main.rb'
+require_relative 'computer'
+require_relative 'game'
+require_relative 'board'
+require_relative '../main'
 
 class Player
-  def initialize(name)
-
-
+  def initialize
+    @turns_remaining = 12
   end
-
-  @turns_remaining = 12
 
   def code_maker()
 

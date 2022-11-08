@@ -1,12 +1,14 @@
-require_relative
+require_relative 'board'
+require_relative 'game'
+require_relative 'player'
+require_relative '../main'
 
 class Computer
-
-  def initialize()
+  def initialize
     # maybe create random name for comp
   end
 
-  def self.create_answer()
+  def self.create_answer
     @answer_key.map do |element|
       element = @color_options.sample
     end
@@ -15,13 +17,11 @@ class Computer
   @turn = 0
   @colors = @color_options
 
-  def self.guess_answer()
+  def self.guess_answer
     @guess = Array.new(4)
     @guess.map do |element|
       element = @colors.sample
     end
-
-
   end
 
 end

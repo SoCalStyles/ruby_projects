@@ -4,4 +4,7 @@ require_relative 'library/player'
 require_relative 'library/computer'
 
 mastermind = Game.new
-mastermind.play
+mastermind.choose_mode
+mastermind.set_up_game
+
+

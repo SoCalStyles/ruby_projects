@@ -3,30 +3,27 @@ require_relative 'game'
 require_relative 'board'
 
 class Player
-  def initialize
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
     @turns_remaining = 12
+    # have to reconfigure this; turns remaining in main or here??
   end
 
   def code_maker()
-
+    @player_answers = [@answer1, @answer2, @answer3, @answer4]
+    @player_answers.each_with_index do |answer|
+      answer = gets.chomp.to_s
+    end
   end
 
   def code_breaker()
-    while @turns_remaining.positive? do
-      puts "You have #{@turns_remaining} turns left."
-      puts 'Please guess the first color:'
-      @guess1 = gets.chomp.to_s
-      puts 'Please guess the second color:'
-      @guess2 = gets.chomp.to_s
-      puts 'Please guess the third color:'
-      @guess3 = gets.chomp.to_s
-      puts 'Please guess the fourth color:'
-      @guess4 = gets.chomp.to_s
-      @player_guess = [@guess1, @guess2, @guess3, @guess4]
-      @turns_remaining -= 1
-      Game.compare_answer
+    @player_guess = [@guess1, @guess2, @guess3, @guess4]
+    @guess_array = @player_guess.each_with_index do |guess, index|
+      puts "Please guess color #"
+      guess = gets.chomp.to_s
     end
-
   end
 
 end

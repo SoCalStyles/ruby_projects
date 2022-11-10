@@ -5,33 +5,37 @@ require_relative 'player'
 # create instance of Game class
 class Game
   @color_options = %w[blue green orange purple red yellow]
-  @answer_key = Array.new(4)
+  @answer_key = Array.new(4, ' ')
 
   def initialize
     @board = Board.new
     puts 'Welcome to Mastermind!'
     puts 'What is your name?'
-    @name = gets.chomp
-    @name = Player.new
+    @player = gets.chomp
+    @player = Player.new(@player)
+    @bot = Computer.new
   end
 
-  def play
-    puts "Okay #{@name}, type 1 to be the Code Maker, type 2 to be the Code Breaker:"
-    @choice = gets.chomp.to_i
+  def choose_mode
+    until (@choice == 1) || (@choice == 2)
+      puts "Okay #{@player.name}, type 1 to be the Code Maker, type 2 to be the Code Breaker:"
+      @choice = gets.chomp.to_i
+    end
+  end
+
+  def set_up_game
     case @choice
     when 1
       @name.code_maker
     when 2
-      @answer = Computer.create_answer()
+      @answer = @bot.create_answer
+      puts @answer
       puts 'Alright, the computer has selected the secret colors.'
       @name.code_breaker
-    else
-      # do a loop on this to ensure 1 or 2 is chosen
     end
-
   end
 
-  def self.feedback
+  def feedback
     @correct = 0
     @incorrect_position = 0
     @incorrect_color = 0
@@ -54,15 +58,18 @@ class Game
     @name.code_breaker
   end
 
-  def self.compare_answer
+  def compare_answer
+    puts @answer
+    puts @player_guess
     if @player_guess == @answer
       puts "Congratulations, you're a Mastermind!"
       puts 'You solved the game in this many turns.'
+      puts @answer
     elsif (@player_guess != @answer) && @turns_remaining == 0
       puts 'You are not a Mastermind.'
       puts "The correct answaer was: #{@answer}"
     else
-      self.feedback
+      #something
     end
   end
 
